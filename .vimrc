@@ -40,6 +40,13 @@ nnoremap <leader>c viw"ty
 nnoremap <leader>vw viw"tp
 nnoremap <leader>vv "tp
 
+" Window naviagation
+nnoremap <leader>h<Tab> <C-w>h
+nnoremap <leader>j<Tab> <C-w>j
+nnoremap <leader>k<Tab> <C-w>k
+nnoremap <leader>l<Tab> <C-w>l
+
+
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
