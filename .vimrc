@@ -8,13 +8,13 @@ set tabstop=2 shiftwidth=2 expandtab
 syntax on
 execute pathogen#infect()
 set hlsearch
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:statline_syntastic = 0
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -I ../Libs/'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:statline_syntastic = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -29,22 +29,26 @@ nnoremap <leader>sv :so ~/.vimrc<CR>
 " General shortcuts
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wa :wa<CR>
+nnoremap <leader>wq :wq<CR>
 nnoremap <leader>qq :q!<CR>
 nnoremap <leader>qa :qa!<CR>
 nnoremap <leader>qw :wa!<CR>:qa<CR>
 
 " Windows-like Copy-Paste
-vnoremap <leader>c "ty
-vnoremap <leader>v "tp
-nnoremap <leader>c viw"ty
-nnoremap <leader>vw viw"tp
-nnoremap <leader>vv "tp
+vnoremap <leader><leader>c "ty
+vnoremap <leader><leader>v "tp
+vnoremap <leader><leader>x "td
+nnoremap <leader><leader>c viw"ty
+nnoremap <leader><leader>w viw"tp
+nnoremap <leader><leader>v "tp
+nnoremap <leader><leader><S-v> "tP
+nnoremap <leader><leader>x viw"td
 
 " Window naviagation
-nnoremap <leader>h<Tab> <C-w>h
-nnoremap <leader>j<Tab> <C-w>j
-nnoremap <leader>k<Tab> <C-w>k
-nnoremap <leader>l<Tab> <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 
 " Search for selected text, forwards or backwards.
