@@ -1,7 +1,13 @@
 imap <C-Return> <CR><CR><C-o>k<Tab>
 " For repeat for each line on . in visual mode
 vnoremap . :norm.<CR>
+
+" Avoid that ESC key
+noremap hkl <ESC>
+vnoremap hkl <ESC>
+nnoremap hkl <ESC>
 inoremap hkl <ESC>
+
 let mapleader = "\<Space>"
 set autoindent
 set tabstop=2 shiftwidth=2 expandtab
@@ -43,6 +49,7 @@ nnoremap <leader><leader>w viw"tp
 nnoremap <leader><leader>v "tp
 nnoremap <leader><leader><S-v> "tP
 nnoremap <leader><leader>x viw"td
+inoremap jkjkv <C-o>"tp
 
 " Window naviagation
 nnoremap <leader>h <C-w>h
