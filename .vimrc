@@ -3,16 +3,24 @@ imap <C-Return> <CR><CR><C-o>k<Tab>
 vnoremap . :norm.<CR>
 
 " Avoid that ESC key
-noremap hkl <ESC>
 vnoremap hkl <ESC>
-nnoremap hkl <ESC>
 inoremap hkl <ESC>
 
 let mapleader = "\<Space>"
 set autoindent
 set tabstop=2 shiftwidth=2 expandtab
 syntax on
-execute pathogen#infect()
+
+
+
+if filereadable(expand("~/.vim/autoload/pathogen.vim"))
+  runtime! autoload/pathogen.vim
+  if exists("g:loaded_pathogen")
+    execute pathogen#infect()
+  endif
+endif
+
+
 set hlsearch
 let g:statline_syntastic = 0
 let g:syntastic_cpp_compiler = 'g++'
@@ -49,7 +57,7 @@ nnoremap <leader><leader>w viw"tp
 nnoremap <leader><leader>v "tp
 nnoremap <leader><leader><S-v> "tP
 nnoremap <leader><leader>x viw"td
-inoremap jkjkv <C-o>"tp
+inoremap jkjkv <C-o>"tP
 
 " Window naviagation
 nnoremap <leader>h <C-w>h
