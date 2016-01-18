@@ -103,3 +103,25 @@ endfunction
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
 nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 nmap <silent> <leader>s :so ~/.vimrc<CR>
+
+" Fold handling
+set foldmethod=syntax   
+set foldnestmax=10
+set foldlevel=2
+nnoremap <silent> <leader>fj :call NextClosedFold('j')<cr>
+nnoremap <silent> <leader>fk :call NextClosedFold('k')<cr>
+nnoremap <silent> <leader>fh za
+nnoremap <silent> <leader>fl zA
+function! NextClosedFold(dir)
+  let cmd = 'norm!z' . a:dir
+  let view = winsaveview()
+  let [l0, l, open] = [0, view.lnum, 1]
+  while l != l0 && open
+    exe cmd
+    let [l0, l] = [l, line('.')]
+    let open = foldclosed(l) < 0
+  endwhile
+  if open
+    call winrestview(view)
+  endif
+endfunction
