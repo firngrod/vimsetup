@@ -40,6 +40,9 @@ hi Comment ctermfg=Green guifg=Green
 nnoremap <leader>ev :split ~/.vimrc<CR>
 nnoremap <leader>sv :so ~/.vimrc<CR>
 
+" Toggle line numbers
+nnoremap <leader>n :set number!<CR>
+
 " General shortcuts
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wa :wa<CR>
@@ -79,7 +82,10 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 let @n=':NERDTree .'
-let @m=':wa:!sh -c "make all & read"'
+let @m=':wa:!sh -c "make test & read"'
+let @c=':wa:!sh -c "make clean; make; read"'
+let @p='xi->hkl'
+let @o='2xi.hkl'
 
 function! MarkWindowSwap()
   let g:markedWinNum = winnr()
@@ -105,9 +111,10 @@ nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 nmap <silent> <leader>s :so ~/.vimrc<CR>
 
 " Fold handling
-set foldmethod=syntax   
-set foldnestmax=10
-set foldlevel=2
+"set foldmethod=syntax   
+"set foldnestmax=10
+"set foldlevel=2
+
 nnoremap <silent> <leader>fj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>fk :call NextClosedFold('k')<cr>
 nnoremap <silent> <leader>fh za
