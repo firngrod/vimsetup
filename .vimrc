@@ -6,8 +6,12 @@ vnoremap . :norm.<CR>
 vnoremap hkl <ESC>
 inoremap hkl <ESC>
 
+" No mouse!
+set mouse=""
+
 let mapleader = "\<Space>"
 set autoindent
+set smartindent
 set tabstop=2 shiftwidth=2 expandtab
 syntax on
 
@@ -24,7 +28,7 @@ endif
 set hlsearch
 let g:statline_syntastic = 0
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -I ../Libs/'
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -I ../Libs/'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -37,11 +41,11 @@ hi Type ctermfg=Cyan guifg=Cyan
 hi Comment ctermfg=Green guifg=Green
 
 " Shortcuts to the VIMRC
-nnoremap <leader>ev :split ~/.vimrc<CR>
+nnoremap <leader>ev :e ~/.vimrc<CR>
 nnoremap <leader>sv :so ~/.vimrc<CR>
 
 " Toggle line numbers
-nnoremap <leader>n :set number!<CR>
+nnoremap <leader>i :set number!<CR>
 
 " General shortcuts
 nnoremap <leader>ww :w<CR>
@@ -68,6 +72,12 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
+" Buffer navigation
+nnoremap <leader>b :buffers<CR>:b! 
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+
+
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -82,10 +92,9 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 let @n=':NERDTree .'
-let @m=':wa:!sh -c "make test & read"'
-let @c=':wa:!sh -c "make clean; make; read"'
-let @p='xi->hkl'
-let @o='2xi.hkl'
+let @m=':wa:!sh -c "make -j8 test & read"'
+let @c=':wa:!sh -c "make clean; make -j8; read"'
+let @b=':wa:!sh -c "make; read"'
 
 function! MarkWindowSwap()
   let g:markedWinNum = winnr()
