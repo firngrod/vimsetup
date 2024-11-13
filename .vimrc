@@ -54,6 +54,7 @@ nnoremap <leader>wq :wq<CR>
 nnoremap <leader>qq :q!<CR>
 nnoremap <leader>qa :qa!<CR>
 nnoremap <leader>qw :wa!<CR>:qa<CR>
+nnoremap <leader>lw :set wrap!<CR>
 
 " Windows-like Copy-Paste
 vnoremap <leader><leader>c "ty
